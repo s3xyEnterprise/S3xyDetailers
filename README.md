@@ -8,15 +8,14 @@ Premium mobile Tesla & EV detailing site for Brevard County, FL.
 |------|------------|
 | `index.html` | Main landing page (home, pricing, services, 3D process viewer, gallery, reviews, about, contact) |
 | `member-login.html` | Member portal — login screen + customer dashboard preview |
-| `release-assets/hero-background.mp4` | Hero background video |
-| `release-assets/*.glb` | 3D car models for the "Feel the Process" viewer |
+| `assets/hero-background.mp4` | Hero background video |
+| `assets/*.glb` | 3D car models for the "Feel the Process" viewer |
 
 This is a **static website** — just HTML/CSS/JS. No build step required.
 
-The heavy files in `release-assets/` are hosted separately on **GitHub Releases**
-(they're too big for GitHub's web uploader), and the site fetches them by URL.
-See `SETUP.md`. After creating the release you must replace `YOUR-USERNAME` in
-`index.html` with your GitHub username so the video and 3D models load.
+The 3D models and video live in the `assets/` folder and load from the same site
+(same-origin), so there are no CORS issues. The roadster model is meshopt-compressed
+(27 MB → 7 MB) so it fits under GitHub's 25 MB upload limit. Keep all files together.
 
 ## Preview it locally
 

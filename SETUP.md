@@ -4,13 +4,18 @@ Follow these in order. Each one is free. When you finish a step that gives you a
 value to paste (a form ID, a link), send it to me and I'll plug it in — or follow
 the "Where to paste it" note yourself.
 
-## How the files are split
+## What's in this project
 
-- **Repo root** (`index.html`, `member-login.html`, `README.md`, `SETUP.md`) →
-  uploaded to your GitHub **repository**. Small, loads your site.
-- **`release-assets/` folder** (the 3D models + hero video) → uploaded to a GitHub
-  **Release**, because some are bigger than GitHub's 25 MB web-upload limit. Your
-  site fetches them from there.
+Everything goes into ONE GitHub repository now — every file is under GitHub's
+25 MB upload limit (the big roadster model was compressed from 27 MB to 7 MB):
+
+- `index.html`, `member-login.html`, `README.md`, `SETUP.md`
+- `assets/` folder → the 3D models + hero video (loaded from the same site, so no
+  CORS problems)
+
+> Note: an earlier setup used a GitHub **Release** to host the models. That's no
+> longer needed — you can leave or delete that release; the site now loads
+> everything from the `assets/` folder in the repo.
 
 ---
 
@@ -21,35 +26,22 @@ the "Where to paste it" note yourself.
    - Repository name: `s3xy-detailers-website` (use exactly this — the asset links depend on it)
    - Set it to **Public** → **Create repository**
 3. On the new repo page, click **uploading an existing file**.
-4. Drag in ONLY the **repo-root files**: `index.html`, `member-login.html`,
-   `README.md`, `SETUP.md`. **Do NOT upload the `release-assets` folder here.**
+4. Drag in **all the files**, including the **`assets` folder** (with the 3 models
+   + video). You can drag the whole set at once. Every file is under 25 MB.
 5. Click **Commit changes**.
 6. Go to **Settings → Pages**. Under **Branch**, choose `main` and `/ (root)` → **Save**.
 7. Wait ~1 minute, refresh — your live address appears:
-   `https://YOUR-USERNAME.github.io/s3xy-detailers-website/`
+   `https://YOUR-USERNAME.github.io/REPO-NAME/`
+   (for your repo that's `https://s3xyenterprise.github.io/S3xyDetailers/`)
+
+✅ The site, 3D models, and video all load from this one repo. No extra steps.
+
+> ⚠️ Keep the `assets` folder and its filenames exactly as they are — the site
+> looks for those names.
 
 ---
 
-## 2. Host the heavy assets (GitHub Releases)
-
-1. On your repo page, click **Releases** (right sidebar) → **Create a new release**.
-2. In **Choose a tag**, type `assets` and click **Create new tag: assets**.
-3. Release title: `assets` (anything is fine).
-4. Drag the **four files inside the `release-assets` folder** into the
-   "Attach binaries" box:
-   `hero-background.mp4`, `tesla-model-3.glb`, `tesla_model_s_blue.glb`, `tesla-roadster.glb`
-   *(the 27 MB model is fine here — Releases allow up to 2 GB per file.)*
-5. Wait for the uploads to finish, then click **Publish release**.
-
-**One edit to connect them:** in `index.html`, find `YOUR-USERNAME` and replace it
-with your real GitHub username. (It appears once. Or send me your username and I'll
-do it.) That's what makes the video + 3D models load.
-
-> ⚠️ Keep the filenames exactly as they are — the site looks for those names.
-
----
-
-## 3. Email "Special Offers" signups (Formspree)
+## 2. Email "Special Offers" signups (Formspree)
 
 1. Sign up free at https://formspree.io
 2. **+ New Form**, name it "Special Offers", set the destination to your own email.
@@ -61,7 +53,7 @@ do it.) That's what makes the video + 3D models load.
 
 ---
 
-## 4. Appointment scheduling (Calendly)
+## 3. Appointment scheduling (Calendly)
 
 1. Sign up free at https://calendly.com
 2. Create an event type (e.g. **"Book a Detail"**) with your availability.
@@ -72,7 +64,7 @@ do it.) That's what makes the video + 3D models load.
 
 ---
 
-## 5. Member login with real accounts (Supabase) — next build step
+## 4. Member login with real accounts (Supabase) — next build step
 
 The biggest piece (real, secure accounts + database). When ready:
 
@@ -82,7 +74,7 @@ The biggest piece (real, secure accounts + database). When ready:
 
 ---
 
-## 6. Custom domain (later)
+## 5. Custom domain (later)
 
 Once you own `s3xydetailing.com`: GitHub repo **Settings → Pages → Custom domain**,
 enter it, and follow the DNS steps from your domain registrar.
@@ -91,9 +83,8 @@ enter it, and follow the DNS steps from your domain registrar.
 
 ### Quick status
 
-- [ ] 1. Live on GitHub Pages (root files uploaded)
-- [ ] 2. Assets uploaded to a Release + `YOUR-USERNAME` replaced
-- [ ] 3. Formspree Form ID pasted
-- [ ] 4. Calendly link pasted
-- [ ] 5. Supabase keys sent (member login)
-- [ ] 6. Custom domain connected
+- [ ] 1. Live on GitHub Pages (all files + `assets` folder uploaded)
+- [ ] 2. Formspree Form ID pasted
+- [ ] 3. Calendly link pasted
+- [ ] 4. Supabase keys sent (member login)
+- [ ] 5. Custom domain connected
